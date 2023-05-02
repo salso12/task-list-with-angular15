@@ -1,0 +1,56 @@
+<div class="container">
+
+<div class="row" style="font-size:larger">
+
+  <div class="col-12">
+    <h2 class="mt-3">Add a New Task</h2>
+    <form action="" >
+      <div class="row">
+        <div class="form-group col-9">
+          <label for="NewTask" class="form-label" >NewTask</label>
+          <input type="text" name="myInput" class="form-control" id="NewTask" [(ngModel)]="task.description" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="col-3">
+        <button class="btn btn-primary" style="width: 150px;margin-top: 2.3rem!important" (click)="addTask()" >ADD</button>
+      </div>
+
+      </div>
+
+</form>
+  </div>
+</div>
+<div class="row my-3" >
+
+    <div class="col-6">
+      <h2 class="mt-3" >To do List</h2>
+      <div class="form-check" *ngFor="let task of tasks" [ngClass]="{'completed': task.done}">
+
+        <label class="form-check-label" style="display: contents;font-size:x-large" for="flexCheckDefault">
+          {{task.description}}
+        </label>
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+        [(ngModel)]="task.done" (change)="updateCheckedTasks(task)">
+
+      </div>
+    </div>
+
+  <div class="col-6" >
+    <h2 class="mt-3" >Task's Done</h2>
+   <table>
+    <tr *ngFor="let task of checkedTasks; let i = index">
+      <td style="font-size: x-large">{{task.description}}</td>
+    </tr>
+   </table>
+  <!-- <div class="card text-white bg-primary mb-3" style="max-width: 80rem;margin:auto">
+    <div class="card-header" style="font-size: xx-large;">List Done</div>
+    <div class="card-body" *ngFor="let task of checkedTasks; let i = index" >
+      <th style="font-size:50px;" >
+         {{task.description}}</th>
+    </div> -->
+
+  </div>
+</div>
+
+
+
+
